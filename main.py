@@ -28,7 +28,6 @@ for loc in locations:
     rectangles.append(rect)
 
 rectangles, weights = cv.groupRectangles(rectangles, 1, 0.3)
-print(rectangles)
 
 if len(rectangles):
     
