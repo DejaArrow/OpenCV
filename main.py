@@ -2,7 +2,7 @@ import cv2 as cv
 from cv2 import rectangle
 import numpy as np
 import os
-from numpy import ndarray
+
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,8 +31,12 @@ rectangles, weights = cv.groupRectangles(rectangles, 1, 0.3)
 print(rectangles)
 
 if len(rectangles):
-    print('Found needle.')
-
+    
+    counting = 0
+    for rectangle in rectangles:
+        print (rectangle)
+        counting+=1
+    print ("The number of stitches found: " , counting)
     
     line_color = (0, 255, 0)
     line_type = cv.LINE_4
@@ -48,10 +52,11 @@ if len(rectangles):
     cv.waitKey()
 
 else:
-    print('Needle not Found')
+    print('Stitches not found')
 
-counting = 0
-for rectangle in rectangles:
-    print (rectangle)
-    counting+=1
-print ("The number of stitches is: " , counting)
+
+
+
+
+
+
