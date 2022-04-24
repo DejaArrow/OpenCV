@@ -6,16 +6,20 @@ import os
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-haystack_img =  cv.imread('haystack.png', cv.IMREAD_UNCHANGED)
-needle_img =  cv.imread('needle.png', cv.IMREAD_UNCHANGED)
+haystack_img =  cv.imread('haystack.png', cv.IMREAD_GRAYSCALE)
+needle_img =  cv.imread('needle.png', cv.IMREAD_GRAYSCALE)
+
 
 needle_w = needle_img.shape[1]
 needle_h = needle_img.shape[0]
 
 result = cv.matchTemplate(haystack_img, needle_img, cv.TM_CCOEFF_NORMED)
+cv.imshow('Result', result)
+cv.waitKey()
 print(result)
 
 threshold = 0.5
+
 locations = np.where(result >= threshold)
 locations = list(zip(*locations[::-1]))
 #print(locations)
